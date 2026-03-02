@@ -12,6 +12,7 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Pricing from "./pages/Pricing";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
         <div className="flex flex-col min-h-screen">
           <Header />
           <div className="flex-1">
+            <ScrollToTop />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/services" element={<Services />} />
