@@ -5,6 +5,7 @@ interface CTAProps {
   description?: string;
   buttonText?: string;
   buttonTo?: string;
+  onClick?: () => void;
 }
 
 const CTA = ({
@@ -12,6 +13,7 @@ const CTA = ({
   description = "We partner with teams that care about quality. If that's you, let's talk.",
   buttonText = "Start a conversation",
   buttonTo = "/contact",
+  onClick,
 }: CTAProps) => {
   return (
     <section className="py-24 px-6">
@@ -22,12 +24,21 @@ const CTA = ({
         <p className="text-muted-foreground text-lg leading-relaxed mb-8">
           {description}
         </p>
-        <Link
-          to={buttonTo}
-          className="inline-block bg-accent text-accent-foreground font-medium px-8 py-3 rounded-md hover:opacity-90 transition-opacity text-sm"
-        >
-          {buttonText}
-        </Link>
+        {onClick ? (
+          <button
+            onClick={onClick}
+            className="inline-block bg-accent text-accent-foreground font-medium px-8 py-3 rounded-md hover:opacity-90 transition-opacity text-sm"
+          >
+            {buttonText}
+          </button>
+        ) : (
+          <Link
+            to={buttonTo}
+            className="inline-block bg-accent text-accent-foreground font-medium px-8 py-3 rounded-md hover:opacity-90 transition-opacity text-sm"
+          >
+            {buttonText}
+          </Link>
+        )}
       </div>
     </section>
   );
